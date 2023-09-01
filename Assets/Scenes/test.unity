@@ -1619,8 +1619,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077033ce2a228e946b45380741437969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractionForce: 1
+  attractionForce: 1.1
   minDistanceToPlayer: 1
+  maxDistanceToPlayer: 4
 --- !u!50 &155777062
 Rigidbody2D:
   serializedVersion: 4
