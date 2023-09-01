@@ -5,6 +5,7 @@ public class Coin : MonoBehaviour
     private PlayerCoins playerCoins;
     public float attractionForce = 5f; // Сила притяжения
     public float minDistanceToPlayer = 1f; // Минимальное расстояние до игрока, при котором монета будет удалена
+    public float maxDistanceToPlayer = 10f; // Максимальное расстояние до игрока, на котором действует притяжение
 
     private Transform player;
 
@@ -27,7 +28,7 @@ public class Coin : MonoBehaviour
                 // Монета близко к игроку, удаляем её
                 Destroy(gameObject);
             }
-            else
+            else if (distanceToPlayer < maxDistanceToPlayer)
             {
                 // Притяжение монеты к игроку
                 Vector3 attractionDirection = directionToPlayer.normalized;
