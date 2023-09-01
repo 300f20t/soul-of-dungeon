@@ -1,52 +1,62 @@
 using UnityEngine;
 
-public class ShotgunScript : MonoBehaviour
+public class ShotgunShooting : MonoBehaviour
 {
+    public PlayerController playerController;
     public WeaponHolder weaponHolder;
     public GameObject bulletPrefab;
-    public int pelletsPerShot = 5;
-    public float spreadAngle = 20f;
-    public float bulletSpeed = 10f;
-    public KeyCode shootKey = KeyCode.Mouse0;
+    public GameObject weaponPrefab;
+    public Transform firePoint;
+    public int pelletCount = 5; //  оличество снар€дов в одном выстреле
+    public float spreadAngle = 20f; // ”гол разброса снар€дов
+    public float shootSpeed = 10f;
+    public float shotDelay = 0.2f;
 
-    private bool isShooting = false;
+    private float lastShotTime;
+
+    void Start()
+    {
+        lastShotTime = -shotDelay;
+    }
 
     void Update()
     {
-        if (!isShooting && Input.GetKeyDown(shootKey))
+        if (weaponHolder.canShoot && Input.GetKey(KeyCode.Mouse0))
         {
-            isShooting = true;
-            Shoot();
+            if (Time.time - lastShotTime >= shotDelay)
+            {
+                Shoot();
+                lastShotTime = Time.time;
+            }
         }
     }
 
     void Shoot()
     {
-        BaseWeaponShooting[] weapons = FindObjectsOfType<BaseWeaponShooting>();
-
-        foreach (BaseWeaponShooting weapon in weapons)
+        if (firePoint != null)
         {
-            if (weaponHolder.canShoot)
-            {
-                for (int i = 0; i < pelletsPerShot; i++)
-                {
-                    float angle = Random.Range(-spreadAngle, spreadAngle);
-                    Quaternion rotation = Quaternion.Euler(0f, 0f, angle) * weapon.firePoint.rotation;
+            GameObject currentWeapon = weaponHolder.currentWeapon;
 
-                    GameObject bullet = Instantiate(bulletPrefab, weapon.firePoint.position, rotation);
+            if (currentWeapon == weaponPrefab)
+            {
+                for (int i = 0; i < pelletCount; i++)
+                {
+                    // –ассчитываем угол разброса дл€ каждого снар€да
+                    float angle = Random.Range(-spreadAngle, spreadAngle);
+                    Quaternion rotation = Quaternion.Euler(0, 0, angle);
+
+                    // —оздаем снар€д и настраиваем его скорость и направление
+                    GameObject bullet = Instantiate(bulletPrefab, firePoint.position, rotation);
+                    bullet.SetActive(true);
+
                     Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
-                    rb.velocity = rotation * Vector2.right * bulletSpeed;
+                    // ¬ычисл€ем направление с учетом угла разброса
+                    Vector3 shootDirection = rotation * firePoint.right;
+
+                    rb.velocity = shootDirection * shootSpeed;
                 }
             }
         }
-
-        StartCoroutine(ResetShooting());
-    }
-
-    System.Collections.IEnumerator ResetShooting()
-    {
-        yield return new WaitForSeconds(0.2f);
-        isShooting = false;
     }
 }
