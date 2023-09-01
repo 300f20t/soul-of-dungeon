@@ -16,32 +16,100 @@ public class RoomGenerator : MonoBehaviour
         GenerateRooms();
     }
 
-    void GenerateRooms()
+    protected void GenerateRooms()
     {
         Vector3 spawnPosition = initialSpawnPosition;
 
         for (int i = 0; i < numberOfRooms; i++)
         {
-            GenerateRoom(spawnPosition);
-
-            // Выбираем случайное направление (влево, вправо, вверх, вниз)
-            int randomDirection = Random.Range(0, 4);
             Vector3 setRandomDirection = Vector3.zero;
 
-            switch (randomDirection)
+            int randomDirection = Random.Range(0, 4);
+            for (int x = 0; x < roomWidth; x++)
             {
-                case 0:
-                    setRandomDirection = Vector3.left;
-                    break;
-                case 1:
-                    setRandomDirection = Vector3.right;
-                    break;
-                case 2:
-                    setRandomDirection = Vector3.up;
-                    break;
-                case 3:
-                    setRandomDirection = Vector3.down;
-                    break;
+                for (int y = 0; y < roomHeight; y++)
+                {
+                    Vector3 position = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
+
+                    int passagePosY = roomHeight / 2;
+                    int passagePosX = roomWidth / 2;
+
+                    switch (randomDirection)
+                    {
+                        case 0:
+                            if (y == passagePosY + 1 && x == 0 || y == passagePosY - 1 && x == 0 || y == passagePosY && x == 0)
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else if (x == 0 || x == roomWidth - 1 || y == 0 || y == roomHeight - 1)
+                            {
+                                GameObject wall = Instantiate(solidWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            setRandomDirection = Vector3.left;
+                            break;
+                        case 1:
+                            if (y == passagePosY + 1 && x != 0 || y == passagePosY - 1 && x != 0 || y == passagePosY && x != 0)
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else if (x == 0 || x == roomWidth - 1 || y == 0 || y == roomHeight - 1)
+                            {
+                                GameObject wall = Instantiate(solidWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            setRandomDirection = Vector3.right;
+                            break;
+                        case 2:
+                            if (x == passagePosX + 1 && y != 0 || x == passagePosX - 1 && y != 0 || x == passagePosX && y != 0)
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else if (x == 0 || x == roomWidth - 1 || y == 0 || y == roomHeight - 1)
+                            {
+                                GameObject wall = Instantiate(solidWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            setRandomDirection = Vector3.up;
+                            break;
+                        case 3:
+                            if (x == passagePosX + 1 && y == 0 || x == passagePosX - 1 && y == 0 || x == passagePosX && y == 0)
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else if (x == 0 || x == roomWidth - 1 || y == 0 || y == roomHeight - 1)
+                            {
+                                GameObject wall = Instantiate(solidWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            else
+                            {
+                                GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
+                                wall.SetActive(true);
+                            }
+                            setRandomDirection = Vector3.down;
+                            break;
+                    }
+                }
             }
 
             // Вычисляем следующую позицию для комнаты
@@ -49,32 +117,8 @@ public class RoomGenerator : MonoBehaviour
         }
     }
 
-    void GenerateRoom(Vector3 spawnPosition)
+    void GenerateRoom(Vector3 spawnPosition, int randomDirection)
     {
-        for (int x = 0; x < roomWidth; x++)
-        {
-            for (int y = 0; y < roomHeight; y++)
-            {
-                Vector3 position = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
 
-                bool passagePosition = y == roomHeight / 2;
-
-                if (y == roomHeight / 2 + 1 && x != 0)
-                {
-                    GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
-                    wall.SetActive(true);
-                }
-                else if (x == 0 || x == roomWidth - 1 || y == 0 || y == roomHeight - 1)
-                {
-                    GameObject wall = Instantiate(solidWallPrefab, position, Quaternion.identity);
-                    wall.SetActive(true);
-                }
-                else
-                {
-                    GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
-                    wall.SetActive(true);
-                }
-            }
-        }
     }
 }

@@ -884,7 +884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &771177064
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1756,17 +1756,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198757070}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df4d867199c96c244b386577134d22a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponHolder: {fileID: 0}
+  playerController: {fileID: 1947464423}
+  weaponHolder: {fileID: 336455176}
   bulletPrefab: {fileID: 1503463021}
-  pelletsPerShot: 5
-  spreadAngle: 20
-  bulletSpeed: 10
-  shootKey: 316
+  weaponPrefab: {fileID: 1198757070}
+  firePoint: {fileID: 1198757076}
+  pelletCount: 4
+  spreadAngle: 10
+  shootSpeed: 10
+  shotDelay: 0.5
 --- !u!61 &1198757072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1846,7 +1849,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198757070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eeac126784bf29e42b40ea5cb9b595a2, type: 3}
   m_Name: 
@@ -3443,9 +3446,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0
+  m_Mass: 0.1
+  m_LinearDrag: 5
+  m_AngularDrag: 5
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -3470,8 +3473,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 077033ce2a228e946b45380741437969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attractionForce: 1
+  attractionForce: 0.3
   minDistanceToPlayer: 1
+  maxDistanceToPlayer: 10
 --- !u!212 &2049270811
 SpriteRenderer:
   m_ObjectHideFlags: 0
