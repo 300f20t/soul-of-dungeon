@@ -3475,7 +3475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attractionForce: 0.3
   minDistanceToPlayer: 1
-  maxDistanceToPlayer: 10
+  maxDistanceToPlayer: 4
 --- !u!212 &2049270811
 SpriteRenderer:
   m_ObjectHideFlags: 0
