@@ -24,25 +24,35 @@ public class RoomGenerator : MonoBehaviour
         {
             Vector3 setRandomDirection = Vector3.zero;
 
-            int randomDirection = Random.Range(0, 4);
-            for (int x = 0; x < roomWidth; x++)
+            int randomDirection = 0; // Random.Range(0, 3);
+            for (int x = -1; x < roomWidth + 2; x++)
             {
-                for (int y = 0; y < roomHeight; y++)
+                for (int y = -1; y < roomHeight +2; y++)
                 {
                     Vector3 position = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
+                    Vector3 passagePosition = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
 
-                    int passagePosY = roomHeight / 2;
-                    int passagePosX = roomWidth / 2;
-                    bool n; //Если бы я знал, что это такое, но я не знаю что это такое...
+                    int passagePositionY = roomHeight / 2;
+                    int passagePositionX = roomWidth / 2;
+                    bool n; // Если бы я знал, что это такое, но я не знаю что это такое...
+                    bool e; // Если бы я знал, что это такое, но я не знаю что это такое...
+                    bool c; // Если бы я знал, что это такое, но я не знаю что это такое...
 
-                    switch (randomDirection) //Тут самый обычный код...
+                    switch (randomDirection) // Тут самый обычный код...
                     {
                         case 0:
                             if (i == 0)
+                            {
                                 n = x == 0;
+                            }
                             else
+                            {
                                 n = x != 0;
-                            if (y == passagePosY + 1 && n || y == passagePosY - 1 && n || y == passagePosY && n)
+                            }
+
+                            e = y == passagePositionY + 1 && n || y == passagePositionY - 1 && n || y == passagePositionY && n;
+
+                            if (e)
                             {
                                 GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
                                 wall.SetActive(true);
@@ -61,10 +71,17 @@ public class RoomGenerator : MonoBehaviour
                             break;
                         case 1:
                             if (i == 0)
+                            {
                                 n = x != 0;
+                            }
                             else
+                            {
                                 n = x == 0;
-                            if (y == passagePosY + 1 && n || y == passagePosY - 1 && n || y == passagePosY && n)
+                            }
+
+                            e = y == passagePositionY + 1 && n || y == passagePositionY - 1 && n || y == passagePositionY && n;
+
+                            if (e)
                             {
                                 GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
                                 wall.SetActive(true);
@@ -83,10 +100,17 @@ public class RoomGenerator : MonoBehaviour
                             break;
                         case 2:
                             if (i == 0)
+                            {
                                 n = y != 0;
+                            }
                             else
+                            {
                                 n = y == 0;
-                            if (x == passagePosX + 1 && n || x == passagePosX - 1 && n || x == passagePosX && n)
+                            }
+
+                            e = x == passagePositionX + 1 && n || x == passagePositionX - 1 && n || x == passagePositionX && n;
+
+                            if (e)
                             {
                                 GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
                                 wall.SetActive(true);
@@ -105,10 +129,17 @@ public class RoomGenerator : MonoBehaviour
                             break;
                         case 3:
                             if (i == 0)
+                            {
                                 n = y == 0;
+                            }
                             else
+                            {
                                 n = y != 0;
-                            if (x == passagePosX + 1 && n || x == passagePosX - 1 && n || x == passagePosX && n)
+                            }
+
+                            e = x == passagePositionX + 1 && n || x == passagePositionX - 1 && n || x == passagePositionX && n;
+
+                            if (e)
                             {
                                 GameObject wall = Instantiate(softWallPrefab, position, Quaternion.identity);
                                 wall.SetActive(true);
@@ -129,13 +160,10 @@ public class RoomGenerator : MonoBehaviour
                 }
             }
 
+            
+
             // Вычисляем следующую позицию для комнаты
             spawnPosition += setRandomDirection * roomSpacing;
         }
-    }
-
-    void GenerateRoom(Vector3 spawnPosition, int randomDirection)
-    {
-
     }
 }
