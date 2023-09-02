@@ -25,9 +25,9 @@ public class RoomGenerator : MonoBehaviour
             Vector3 setRandomDirection = Vector3.zero;
 
             int randomDirection = 0; // Random.Range(0, 3);
-            for (int x = -1; x < roomWidth + 2; x++)
+            for (int x = 0; x < roomWidth; x++)
             {
-                for (int y = -1; y < roomHeight +2; y++)
+                for (int y = 0; y < roomHeight; y++)
                 {
                     Vector3 position = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
                     Vector3 passagePosition = spawnPosition + new Vector3(x * wallSize, y * wallSize, 0);
