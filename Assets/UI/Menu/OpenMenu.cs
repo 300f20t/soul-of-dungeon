@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class OpenMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject menuUI;
+    public GameObject menuUI;
 
     private bool isMenuActive;
 
