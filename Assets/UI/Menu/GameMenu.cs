@@ -6,11 +6,6 @@ public class OpenMenu : MonoBehaviour
 
     private bool isMenuActive;
 
-    private void Start()
-    {
-        menuUI.SetActive(false); // Сначала отключаем меню выхода
-    }
-
     void Update()
     {
         isMenuActive = menuUI.activeSelf;
