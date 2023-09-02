@@ -33,9 +33,9 @@ public class RoomGenerator : MonoBehaviour
 
                     int passagePosY = roomHeight / 2;
                     int passagePosX = roomWidth / 2;
-                    bool n;
+                    bool n; //Если бы я знал, что это такое, но я не знаю что это такое...
 
-                    switch (randomDirection)
+                    switch (randomDirection) //Тут самый обычный код...
                     {
                         case 0:
                             if (i == 0)
