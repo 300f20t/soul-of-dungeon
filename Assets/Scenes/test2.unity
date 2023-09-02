@@ -2764,7 +2764,6 @@ GameObject:
   - component: {fileID: 1947464422}
   - component: {fileID: 1947464421}
   - component: {fileID: 1947464420}
-  - component: {fileID: 1947464430}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -2886,9 +2885,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e1329565405c6f44881361aa4b2d258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  timeToStop: 0.1
-  slowdownFactor: 0.5
+  slowdownFactor: 0.1
+  timeToStop: 20
+  moveSpeed: 10
 --- !u!114 &1947464424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3029,21 +3028,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1947464430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1947464419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce8e34264ab54342b170510c28f6e1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
-  healthSlider: {fileID: 0}
 --- !u!1 &2035085276
 GameObject:
   m_ObjectHideFlags: 0
