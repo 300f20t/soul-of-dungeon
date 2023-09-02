@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
-    public int maxHealth = 100;
-    public int currentHealth;
-    public int scoreValue = 10; // значение очков за убийство врага
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth;
+    [SerializeField] private int scoreValue = 10; // значение очков за убийство врага
     private ScoreScript scoreScript; // ссылка на ScoreScript
 
     private bool isDead = false;

@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float movementSpeed = 2f;
-    public float detectionRange = 5f;
-    public float stoppingDistance = 1f;
+    [SerializeField] private float movementSpeed = 2f;
+    [SerializeField] private float detectionRange = 5f;
+    [SerializeField] private float stoppingDistance = 1f;
 
     private GameObject player;
     private bool playerDetected = false;

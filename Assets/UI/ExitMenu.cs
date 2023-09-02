@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ExitMenu : MonoBehaviour
 {
-    public GameObject exitMenuUI;
+    [SerializeField] private GameObject exitMenuUI;
 
     private bool isExitMenuActive;
 

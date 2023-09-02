@@ -3,7 +3,7 @@ using TMPro;
 
 public class PlayerCoins : MonoBehaviour
 {
-    public int coins = 0;
+    [SerializeField] private int coins = 0;
     private TextMeshProUGUI textToEdit;
 
     void Start()

@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class BaseWeaponShooting : MonoBehaviour
 {
-    public PlayerController playerController;
-    public WeaponHolder weaponHolder;
-    public GameObject bulletPrefab;
-    public GameObject weaponPrefab;
-    public Transform firePoint;
-    public float shootSpeed = 10f;
-    public float shotDelay = 0.2f; // Задержка между выстрелами
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private WeaponHolder weaponHolder;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject weaponPrefab;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private float shootSpeed = 10f;
+    [SerializeField] private float shotDelay = 0.2f; // Задержка между выстрелами
 
     private float lastShotTime;
 

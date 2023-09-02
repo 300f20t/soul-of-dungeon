@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerSkinSwitch : MonoBehaviour
 {
-    public Sprite[] playerSprites; // массив спрайтов игрока
+    [SerializeField] private Sprite[] playerSprites; // массив спрайтов игрока
     private int currentSkinIndex = 0; // индекс текущего спрайта игрока
     private SpriteRenderer spriteRenderer; // компонент для отображения спрайта
 

@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerRotation : MonoBehaviour
 
 {
-    public KeyCode rotateLeft = KeyCode.A;
-    public KeyCode rotateRight = KeyCode.D;
+    [SerializeField] private KeyCode rotateLeft = KeyCode.A;
+    [SerializeField] private KeyCode rotateRight = KeyCode.D;
 
     void Update()
     {

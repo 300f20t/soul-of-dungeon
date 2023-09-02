@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreScript : MonoBehaviour
 {
-    public int score;
+    [SerializeField] private int score;
     private TextMeshProUGUI textToEdit;
 
     void Start()

@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float timeToStop = 0.1f;
-    public float slowdownFactor = 0.5f;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float timeToStop = 0.1f;
+    [SerializeField] private float slowdownFactor = 0.5f;
 
     private Rigidbody2D rb;
     private Vector2 moveDirection;

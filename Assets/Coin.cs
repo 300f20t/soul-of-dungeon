@@ -3,9 +3,9 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private PlayerCoins playerCoins;
-    public float attractionForce = 5f; // —ила прит€жени€
-    public float minDistanceToPlayer = 1f; // ћинимальное рассто€ние до игрока, при котором монета будет удалена
-    public float maxDistanceToPlayer = 10f; // ћаксимальное рассто€ние до игрока, на котором действует прит€жение
+    [SerializeField] private float attractionForce = 5f; // —ила прит€жени€
+    [SerializeField] private float minDistanceToPlayer = 1f; // ћинимальное рассто€ние до игрока, при котором монета будет удалена
+    [SerializeField] private float maxDistanceToPlayer = 10f; // ћаксимальное рассто€ние до игрока, на котором действует прит€жение
 
     private Transform player;
 

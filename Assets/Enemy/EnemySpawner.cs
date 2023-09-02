@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
-    public float spawnInterval = 3f;
-    public float spawnRange = 5f;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float spawnInterval = 3f;
+    [SerializeField] private float spawnRange = 5f;
 
     private float spawnTimer;
 

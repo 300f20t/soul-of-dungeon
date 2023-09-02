@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
 {
-    public GameObject solidWallPrefab;   // Префаб твёрдой стены
-    public GameObject softWallPrefab;    // Префаб нетвёрдой стены
-    public Vector3 initialSpawnPosition; // Позиция спавна первой комнаты
-    public int roomWidth = 10;           // Ширина комнаты
-    public int roomHeight = 6;           // Высота комнаты
-    public int numberOfRooms = 5;        // Количество комнат
-    public float wallSize = 1.0f;        // Размер блока стены
-    public float roomSpacing = 5.0f;     // Расстояние между комнатами
+    [SerializeField] private GameObject solidWallPrefab;   // Префаб твёрдой стены
+    [SerializeField] private GameObject softWallPrefab;    // Префаб нетвёрдой стены
+    [SerializeField] private Vector3 initialSpawnPosition; // Позиция спавна первой комнаты
+    [SerializeField] private int roomWidth = 10;           // Ширина комнаты
+    [SerializeField] private int roomHeight = 6;           // Высота комнаты
+    [SerializeField] private int numberOfRooms = 5;        // Количество комнат
+    [SerializeField] private float wallSize = 1.0f;        // Размер блока стены
+    [SerializeField] private float roomSpacing = 5.0f;     // Расстояние между комнатами
 
     void Start()
     {
