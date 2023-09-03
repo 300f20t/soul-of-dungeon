@@ -7,6 +7,9 @@ public class SkillTreeDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     private RectTransform rectTransform;
     private Vector3 offset;
 
+    [SerializeField] private Vector3 maxPosition; // Максимальная позиция
+    [SerializeField] private Vector3 minPosition; // Минимальная позиция
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -28,8 +31,12 @@ public class SkillTreeDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, I
         Vector3 localCursor;
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out localCursor))
         {
-            // Устанавливаем новую позицию дочерних объектов с учетом смещения
-            rectTransform.anchoredPosition3D = localCursor + offset;
+            // Ограничиваем позицию в пределах максимальной и минимальной позиций
+            Vector3 newPosition = localCursor + offset;
+            newPosition.x = Mathf.Clamp(newPosition.x, minPosition.x, maxPosition.x);
+            newPosition.y = Mathf.Clamp(newPosition.y, minPosition.y, maxPosition.y);
+            newPosition.z = Mathf.Clamp(newPosition.z, minPosition.z, maxPosition.z);
+            rectTransform.anchoredPosition3D = newPosition;
         }
     }
 
