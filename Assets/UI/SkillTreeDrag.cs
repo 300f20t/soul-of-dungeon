@@ -7,12 +7,13 @@ public class SkillTreeDrag : MonoBehaviour, IDragHandler, IPointerDownHandler, I
     private RectTransform rectTransform;
     private Vector3 offset;
 
+    [SerializeField] private GameObject objectToDrag; // Объект для перетаскивания
     [SerializeField] private Vector3 maxPosition; // Максимальная позиция
     [SerializeField] private Vector3 minPosition; // Минимальная позиция
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
+        rectTransform = objectToDrag.GetComponent<RectTransform>(); // Используем RectTransform объекта для перетаскивания
     }
 
     public void OnPointerDown(PointerEventData eventData)

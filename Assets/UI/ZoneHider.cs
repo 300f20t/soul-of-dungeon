@@ -1,58 +1,26 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ZoneHider : MonoBehaviour
 {
-    [SerializeField] private BoxCollider2D zoneCollider; // 2D коллайдер, обозначающий зону
-    [SerializeField] private GameObject[] objectsToHide; // Массив UI объектов, которые нужно скрыть
-
-    private bool isInZone = false; // Флаг, определяющий, находится ли игрок в зоне
-
-    private void Start()
-    {
-        if (zoneCollider == null)
-        {
-            Debug.LogError("Zone Collider is not assigned!");
-        }
-    }
+    [SerializeField] private Vector3 maxPosition; // Максимальная позиция
+    [SerializeField] private Vector3 minPosition; // Минимальная позиция
+    [SerializeField] private RectTransform objectToHide; // Используем RectTransform
 
     private void Update()
     {
-        // Проверяем, находится ли игрок в зоне
-        if (zoneCollider != null)
-        {
-            Vector3 position = transform.position;
-            Vector3 zoneMin = zoneCollider.bounds.min;
-            Vector3 zoneMax = zoneCollider.bounds.max;
+        Vector3 objectPosition = objectToHide.anchoredPosition; // Получаем позицию RectTransform
 
-            if (position.x >= zoneMin.x && position.x <= zoneMax.x &&
-                position.y >= zoneMin.y && position.y <= zoneMax.y)
-            {
-                // Вход в зону
-                if (!isInZone)
-                {
-                    isInZone = true;
-                    ShowObjects(false); // Скрываем объекты при входе в зону
-                }
-            }
-            else
-            {
-                // Выход из зоны
-                if (isInZone)
-                {
-                    isInZone = false;
-                    ShowObjects(true); // Показываем объекты при выходе из зоны
-                }
-            }
+        // Проверяем, находится ли объект внутри заданной зоны
+        if (objectPosition.x >= minPosition.x && objectPosition.x <= maxPosition.x &&
+            objectPosition.y >= minPosition.y && objectPosition.y <= maxPosition.y)
+        {
+            // Объект входит в зону, делаем его активным
+            objectToHide.gameObject.SetActive(true);
         }
-    }
-
-    private void ShowObjects(bool show)
-    {
-        // Активируем или деактивируем объекты в зависимости от параметра show
-        foreach (var obj in objectsToHide)
+        else
         {
-            obj.SetActive(show);
+            // Объект покидает зону, делаем его неактивным
+            objectToHide.gameObject.SetActive(false);
         }
     }
 }

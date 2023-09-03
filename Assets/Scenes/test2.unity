@@ -1884,6 +1884,7 @@ GameObject:
   - component: {fileID: 1038269220}
   - component: {fileID: 1038269219}
   - component: {fileID: 1038269222}
+  - component: {fileID: 1038269223}
   m_Layer: 5
   m_Name: SkillsTreePressZone
   m_TagString: Untagged
@@ -1903,7 +1904,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1742632311}
+  - {fileID: 1242277363}
   m_Father: {fileID: 1950724948}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1924,7 +1925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18242c5f68073dd42a4997215a503386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToScale: {fileID: 1038269216}
+  objectToScale: {fileID: 1242277362}
   minScale: 4
   maxScale: 16
   scrollSpeed: 8
@@ -1978,8 +1979,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f232e2210d96415469197e8f9cab3a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPosition: {x: 100, y: 100, z: 0}
-  minPosition: {x: -100, y: -100, z: 0}
+  objectToDrag: {fileID: 1242277362}
+  maxPosition: {x: 600, y: 400, z: 0}
+  minPosition: {x: -600, y: -400, z: 0}
+--- !u!114 &1038269223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038269216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c71ad697fb771498e7e84e3a166183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxPosition: {x: 480, y: 210, z: 0}
+  minPosition: {x: -480, y: -210, z: 0}
+  objectToHide: {fileID: 1242277363}
 --- !u!1 &1111270167
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2554,43 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1242277362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1242277363}
+  m_Layer: 5
+  m_Name: SkillsTree
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1242277363
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242277362}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1742632311}
+  m_Father: {fileID: 1038269217}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1396098947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,7 +3479,7 @@ RectTransform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1038269217}
+  m_Father: {fileID: 1242277363}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
