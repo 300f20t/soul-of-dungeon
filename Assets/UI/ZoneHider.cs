@@ -1,26 +1,26 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ZoneHider : MonoBehaviour
+public class ZoneHider : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private Vector3 maxPosition; // Максимальная позиция
-    [SerializeField] private Vector3 minPosition; // Минимальная позиция
-    [SerializeField] private RectTransform objectToHide; // Используем RectTransform
+    [SerializeField] private GameObject[] objectsToShow; // Массив объектов для отображения
 
-    private void Update()
+    // Вызывается, когда мышь входит в зону
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        Vector3 objectPosition = objectToHide.anchoredPosition; // Получаем позицию RectTransform
-
-        // Проверяем, находится ли объект внутри заданной зоны
-        if (objectPosition.x >= minPosition.x && objectPosition.x <= maxPosition.x &&
-            objectPosition.y >= minPosition.y && objectPosition.y <= maxPosition.y)
+        foreach (GameObject obj in objectsToShow)
         {
-            // Объект входит в зону, делаем его активным
-            objectToHide.gameObject.SetActive(true);
+            obj.SetActive(true); // Отображаем объекты
         }
-        else
+    }
+
+    // Вызывается, когда мышь выходит из зоны
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        foreach (GameObject obj in objectsToShow)
         {
-            // Объект покидает зону, делаем его неактивным
-            objectToHide.gameObject.SetActive(false);
+            obj.SetActive(false); // Скрываем объекты
         }
     }
 }
