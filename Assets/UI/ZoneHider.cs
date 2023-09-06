@@ -8,7 +8,7 @@ public class ZoneHider : MonoBehaviour
 
     private void Update()
     {
-        Vector3 objectPosition = objectToHide.anchoredPosition; // Получаем позицию RectTransform
+        Vector3 objectPosition = objectToHide.position; // Получаем позицию RectTransform
 
         // Проверяем, находится ли объект внутри заданной зоны
         if (objectPosition.x >= minPosition.x && objectPosition.x <= maxPosition.x &&
@@ -24,3 +24,4 @@ public class ZoneHider : MonoBehaviour
         }
     }
 }
+// Чёт всё тут совсем плохо... 
