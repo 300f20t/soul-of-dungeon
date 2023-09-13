@@ -2,20 +2,33 @@ using UnityEngine;
 
 public class RoomCloner : MonoBehaviour
 {
-    [SerializeField] private GameObject roomPrefab; // Reference to the room prefab you want to clone
+    [SerializeField] private GameObject roomPrefab;
+    [SerializeField] private Vector3 spawnOffset = new Vector3(10f, 0f, 0f);
+
+    private GameObject previousRoom;
 
     public void CloneRoom()
     {
-        // Check if the prefab is assigned
         if (roomPrefab == null)
         {
             Debug.LogWarning("Room prefab is not assigned!");
             return;
         }
 
-        // Clone the room prefab
+        Debug.Log("Cloning room...");
+
+        // Check the position from which the room is being cloned
+        Debug.Log("Clone from position: " + transform.position);
+
         GameObject clonedRoom = Instantiate(roomPrefab, transform.position, Quaternion.identity);
 
-        // Optionally, you can customize the cloned room further, such as adjusting its position or properties.
+        if (previousRoom != null)
+        {
+            clonedRoom.transform.position = previousRoom.transform.position + spawnOffset;
+        }
+
+        previousRoom = clonedRoom;
+
+        Debug.Log("Room cloned!");
     }
 }
