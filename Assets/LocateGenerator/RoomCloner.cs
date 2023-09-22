@@ -3,11 +3,9 @@ using UnityEngine;
 public class RoomCloner : MonoBehaviour
 {
     [SerializeField] private GameObject roomPrefab;
-    [SerializeField] private Vector3 spawnOffset = new Vector3(10f, 0f, 0f);
+    [SerializeField] private float maxOffsetDistance = 10f;
 
-    private GameObject previousRoom;
-
-    public void Start()
+    public void CloneRoom()
     {
         if (roomPrefab == null)
         {
@@ -15,15 +13,18 @@ public class RoomCloner : MonoBehaviour
             return;
         }
 
-        Debug.Log("Cloning room...");
+        // Calculate a random direction vector
+        Vector2 randomDirection = Random.insideUnitCircle.normalized;
 
-        // Check the position from which the room is being cloned
-        Debug.Log("Clone from position: " + transform.position);
+        // Calculate the random offset distance within the specified range
+        float randomOffsetDistance = Random.Range(0f, maxOffsetDistance);
 
-        GameObject clonedRoom = Instantiate(roomPrefab, transform.position + spawnOffset, Quaternion.identity);
+        // Calculate the final position for the cloned room
+        Vector3 newPosition = transform.position + new Vector3(randomDirection.x, 0f, randomDirection.y) * randomOffsetDistance;
 
-        previousRoom = clonedRoom;
+        // Instantiate the cloned room at the new position
+        GameObject clonedRoom = Instantiate(roomPrefab, newPosition, Quaternion.identity);
 
-        Debug.Log("Room cloned!");
+        Debug.Log("Room cloned at position: " + newPosition);
     }
 }
