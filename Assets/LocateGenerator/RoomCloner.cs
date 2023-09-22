@@ -7,7 +7,7 @@ public class RoomCloner : MonoBehaviour
 
     private GameObject previousRoom;
 
-    public void CloneRoom()
+    public void Start()
     {
         if (roomPrefab == null)
         {
@@ -20,12 +20,7 @@ public class RoomCloner : MonoBehaviour
         // Check the position from which the room is being cloned
         Debug.Log("Clone from position: " + transform.position);
 
-        GameObject clonedRoom = Instantiate(roomPrefab, transform.position, Quaternion.identity);
-
-        if (previousRoom != null)
-        {
-            clonedRoom.transform.position = previousRoom.transform.position + spawnOffset;
-        }
+        GameObject clonedRoom = Instantiate(roomPrefab, transform.position + spawnOffset, Quaternion.identity);
 
         previousRoom = clonedRoom;
 
