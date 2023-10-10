@@ -1,16 +1,16 @@
 using System;
-using UnityEditor.PackageManager;
+//using UnityEditor.PackageManager;
 using UnityEngine;
-using DiscordRPC;
+//using DiscordRPC;
 
 public class ExitGame : MonoBehaviour
 {
     public void Exit()
     {
-        var client = new DiscordRpcClient("1138637051349188710");
+        //var client = new DiscordRpcClient("1138637051349188710");
 
         // Завершите соединение перед выходом
-        client.Dispose();
+        //client.Dispose();
 
         Application.Quit(); // Завершаем приложение при нажатии Esc
     }
