@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
     public float slowdownFactor = 0.5f;
     public float timeToStop = 0.1f;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!isLocalPlayer) return;
         moveDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         timeSinceLastMove += Time.deltaTime;
         if (moveDirection.magnitude > 0)
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isLocalPlayer) return;
         if (timeSinceLastMove > timeToStop)
         {
             rb.velocity = Vector2.zero;
