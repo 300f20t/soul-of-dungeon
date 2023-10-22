@@ -1444,7 +1444,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee8b6ea613935e14fa756766192bc821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7217049699996256934, guid: ce094e8f9d43ffa4ebe2c71a2ff632d5, type: 3}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 1198757076}
   smoothSpeed: 0.1
   offset: {x: 0, y: 0, z: 0}
 --- !u!81 &1037181058
@@ -1547,7 +1550,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1037181056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   syncDirection: 0
@@ -1561,17 +1564,18 @@ MonoBehaviour:
   interpolatePosition: 1
   interpolateRotation: 1
   interpolateScale: 1
-  coordinateSpace: 0
+  coordinateSpace: 1
   sendIntervalMultiplier: 1
   timelineOffset: 0
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChange: 1
-  bufferResetMultiplier: 3
-  positionSensitivity: 0.01
+  onlySyncOnChange: 0
+  onlySyncOnChangeCorrectionMultiplier: 2
   rotationSensitivity: 0.01
-  scaleSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
 --- !u!1 &1038269216
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,8 +2077,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4d867199c96c244b386577134d22a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
-  weaponHolder: {fileID: 0}
+  playerController: {fileID: 2350498212216169158, guid: ce094e8f9d43ffa4ebe2c71a2ff632d5, type: 3}
+  weaponHolder: {fileID: 4400217010690777245, guid: 252d742fef6582a46b885ae599127942, type: 3}
   bulletPrefab: {fileID: 1503463021}
   weaponPrefab: {fileID: 1198757070}
   firePoint: {fileID: 1198757076}

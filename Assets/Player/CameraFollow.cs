@@ -1,6 +1,7 @@
 using UnityEngine;
+using Mirror;
 
-public class CameraFollow : MonoBehaviour
+public class CameraFollow : NetworkBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float smoothSpeed = 0.125f;
@@ -8,6 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isLocalPlayer) return;
         Vector3 desiredPosition = target.position + offset;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
         transform.position = smoothedPosition;
